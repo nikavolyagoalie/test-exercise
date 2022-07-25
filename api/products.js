@@ -1,10 +1,12 @@
 const SLEEP_TIME = 200;
+
 function sleep(fn) {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(fn());
-    }, SLEEP_TIME);
-  });
+      resolve(fn)
+    }, SLEEP_TIME)
+  }
+  );
 }
 
 const dataService = {
@@ -29,13 +31,15 @@ const dataService = {
         image: '/products/cabbage.jpg',
       }
     ];
+    console.log(products)
     return products;
   },
 };
 
 const productsApi = {
   getProductsList() {
-    return sleep(dataService.getProductsList);
+    return sleep(dataService.getProductsList());
   },
 };
+
 export default productsApi;

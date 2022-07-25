@@ -9,8 +9,8 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
-    getProductsList(ctx, data) {
-      return api.getProductsList();
+    async getProductsList(ctx, data) {
+      return await api.getProductsList();
     },
   },
   modules: {

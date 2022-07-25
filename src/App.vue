@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <Header :cart="cart" :currency="currency"></Header>
-    <List :currency="currency"/>
-    <Cart :cart="cart"/>
+    <div class="main">
+      <List :currency="currency"/>
+      <Cart :cart="cart"/>
+    </div>
   </div>
 </template>
 
@@ -40,5 +42,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   color: #2c3e50;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
 }
 </style>
