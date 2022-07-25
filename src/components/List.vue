@@ -12,7 +12,7 @@
       <img class="card-image" :src="product.image" alt="" />
       <!-- цену округляю до двух знаков после запятой -->
       <p class="card-price">
-        Цена: {{ parseFloat((product.price).toFixed(2)) }} {{ currency }}
+        Цена: {{ parseFloat(product.price.toFixed(2)) }} {{ currency }}
       </p>
 
       <!-- добавил класс для блоков input -->
@@ -60,8 +60,9 @@ export default {
       this.cardsWidth = 100 / count;
     },
 
+    //чтобы исправить данный кусок кода в котором setInterval нужно было поставить на 2000мс обратился с вопросом на канал по Vue в телеграме, где наводку дал сам автор тестового))) как тесен мир) вот это был поворот)
     startPricesMonitoring() {
-      setInterval(this.getList, 1000);
+      setInterval(this.getList, 2000);
     },
 
     async getList() {
@@ -70,11 +71,9 @@ export default {
     },
 
     addToCart(product) {
-      let currentInput = this.$refs.amount.find(
-        (input) => { 
-          return input.id === product.id 
-        }
-      );
+      let currentInput = this.$refs.amount.find((input) => {
+        return input.id === product.id;
+      });
 
       let amount = currentInput.value;
 
@@ -87,7 +86,7 @@ export default {
       //если значение поля ввода больше 0, то добавляем товары в корзину,очищаем поле ввода
       if (amount > 0) {
         this.$parent.cart.push(data);
-        currentInput.value = ''
+        currentInput.value = "";
       }
     },
   },
@@ -158,7 +157,7 @@ button {
 /* добавил hover-эффект для button */
 button:hover {
   background: #e1e1e1;
-  transition: .3s all;
+  transition: 0.3s all;
 }
 
 @media screen and (max-width: 420px) {
