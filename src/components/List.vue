@@ -1,6 +1,6 @@
 <template>
   <div class="product-list">
-    <!-- добавляю :key -->
+    <!-- добавляю :key поскольку этот атрибут "...помогает алгоритму работы с виртуальным DOM определить, какие ноды соответствует какой строке данных."(Текст из документации)   -->
     <div
       class="card"
       v-for="(product, idx) in products"
@@ -44,7 +44,7 @@ export default {
       isFull: false,
     };
   },
-  //cardsWidth() делаю методом
+  //использую метод updateWidth() для обновления ширины карточки продукта
   methods: {
     updateWidth() {
       let width = window.innerWidth;
@@ -90,11 +90,12 @@ export default {
       }
     },
   },
-  //При создании экземпляра компонента подписываюсь на изменения размеров экрана
-  //а также вызываю функцию updateWidth()
+  
   created() {
+    //При создании экземпляра компонента подписываюсь на изменения размеров экрана
     window.addEventListener("resize", this.updateWidth);
     this.startPricesMonitoring();
+    //а также вызываю функцию updateWidth()
     this.updateWidth();
   },
 };
